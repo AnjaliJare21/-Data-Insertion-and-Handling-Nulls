@@ -1,12 +1,14 @@
-drop database EcommerceDB;
+-- create database
 CREATE DATABASE IF NOT EXISTS EcommerceDB;
 USE EcommerceDB;
 
+-- create table categories
 CREATE TABLE Categories (
   CategoryID INT AUTO_INCREMENT PRIMARY KEY,
   CategoryName VARCHAR(100) NOT NULL
 );
 
+--create table Product
 CREATE TABLE Products (
   ProductID INT AUTO_INCREMENT PRIMARY KEY,
   ProductName VARCHAR(100),
@@ -16,6 +18,7 @@ CREATE TABLE Products (
   FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
 
+--create table customer
 CREATE TABLE Customers (
   CustomerID INT AUTO_INCREMENT PRIMARY KEY,
   Name VARCHAR(100),
@@ -24,6 +27,7 @@ CREATE TABLE Customers (
   Address VARCHAR(255)
 );
 
+-- create table orders
 CREATE TABLE Orders (
   OrderID INT AUTO_INCREMENT PRIMARY KEY,
   CustomerID INT,
@@ -32,6 +36,7 @@ CREATE TABLE Orders (
   FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
 
+--orderitems table
 CREATE TABLE OrderItems (
   OrderItemID INT AUTO_INCREMENT PRIMARY KEY,
   OrderID INT,
@@ -42,6 +47,7 @@ CREATE TABLE OrderItems (
   FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
 
+--table payment
 CREATE TABLE Payments (
   PaymentID INT AUTO_INCREMENT PRIMARY KEY,
   OrderID INT,
